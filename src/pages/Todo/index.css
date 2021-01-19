@@ -1,0 +1,14 @@
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.block-container {
+  min-width: 400px;
+}
+
+button {
+  margin-left: 10px;
+}

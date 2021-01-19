@@ -13,7 +13,20 @@ const Todo = () => {
   useEffect(() => {}, [itemToAdd, todoList])
 
   // put your code here (don't delete this line)
-
+  const handleEditChange = (e) => {
+    if (todoList != []) {
+      // checking whether or no the array is empty
+      setTodoList(
+        // changing the value of item in the state variable
+        todoList.map((item) => {
+          if (item.id != e.target.name) {
+            //getting value from input
+            return item
+          } else return { id: item.id, value: e.target.value }
+        })
+      )
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
   }

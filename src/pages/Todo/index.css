@@ -12,3 +12,8 @@
 button {
   margin-left: 10px;
 }
+
+.item-wrapper {
+  display: inline-block;
+  min-width: 200px;
+}

@@ -1,26 +1,27 @@
-import { useEffect, useState } from 'react'
-import './index.css'
+import { useEffect, useState } from "react";
+import { addItem } from "../../utils/add";
+import "./index.css";
 
 const Todo = () => {
   const [todoList, setTodoList] = useState([
-    { id: 1, value: 'item 1' },
-    { id: 2, value: 'item 2' },
-    { id: 3, value: 'item 3' },
-  ])
-  const [itemToAdd, setItemToAdd] = useState('')
-  let output = <p>The list is empty</p>
+    { id: 1, value: "item 1" },
+    { id: 2, value: "item 2" },
+    { id: 3, value: "item 3" },
+  ]);
+  const [itemToAdd, setItemToAdd] = useState("");
+  let output = <p>The list is empty</p>;
 
-  useEffect(() => {}, [itemToAdd, todoList])
+  useEffect(() => {}, [itemToAdd, todoList]);
 
   // put your code here (don't delete this line)
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   const handleChange = (e) => {
-    setItemToAdd(e.target.value)
-  }
+    setItemToAdd(e.target.value);
+  };
 
   output = todoList.map((item) => (
     <li key={item.id}>
@@ -30,7 +31,7 @@ const Todo = () => {
         delete
       </button>
     </li>
-  ))
+  ));
   return (
     <div className="todo-container">
       <div className="block-container">
@@ -45,12 +46,14 @@ const Todo = () => {
         <form onSubmit={handleSubmit}>
           <label>
             <input name="add-item" value={itemToAdd} onChange={handleChange} />
-            <button>Add item</button>
+            <button onClick={setTodoList(addItem(todoList, itemToAdd))}>
+              Add item
+            </button>
           </label>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Todo
+export default Todo;

@@ -14,6 +14,16 @@ const Todo = () => {
 
   // put your code here (don't delete this line)
 
+  const del = (id) => {
+    setTodoList(
+      todoList.filter((item) => {
+        if (item.id !== id) {
+          return item
+        }
+      })
+    )
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
   }

@@ -1,27 +1,23 @@
-import { useEffect, useState } from 'react'
-import './index.css'
+import { useEffect, useState } from "react";
+import "./index.css";
 
 const Todo = () => {
-  const [todoList, setTodoList] = useState([
-    { id: 1, value: 'item 1' },
-    { id: 2, value: 'item 2' },
-    { id: 3, value: 'item 3' },
-  ])
-  const [itemToAdd, setItemToAdd] = useState('')
-  let output = <p>The list is empty</p>
+  const [todoList, setTodoList] = useState([{ id: 1, value: "allo" }]);
+  const [itemToAdd, setItemToAdd] = useState("");
+  let output = <p>The list is empty</p>;
 
-  useEffect(() => {}, [itemToAdd, todoList])
+  useEffect(() => {}, [itemToAdd, todoList]);
 
   // put your code here (don't delete this line)
   const del = (id) => {
     setTodoList(
       todoList.filter((item) => {
         if (item.id !== id) {
-          return item
+          return item;
         }
       })
-    )
-  }
+    );
+  };
 
   const handleEditChange = (e) => {
     if (todoList != []) {
@@ -31,20 +27,30 @@ const Todo = () => {
         todoList.map((item) => {
           if (item.id != e.target.name) {
             //getting value from input
-            return item
-          } else return { id: item.id, value: e.target.value }
+            return item;
+          } else return { id: item.id, value: e.target.value };
         })
-      )
+      );
     }
-  }
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
+
+  const addItem = (item) => {
+    var items = todoList;
+    var newItem = { id: todoList.length + 1, value: item };
+    items.push(newItem);
+    // console.log(newTable);
+    // console.log(items);
+    setTodoList(items);
+    setItemToAdd("");
+  };
 
   const handleChange = (e) => {
-    setItemToAdd(e.target.value)
-  }
+    setItemToAdd(e.target.value);
+  };
 
   output = todoList.map((item) => (
     <li key={item.id}>
@@ -54,7 +60,7 @@ const Todo = () => {
         delete
       </button>
     </li>
-  ))
+  ));
   return (
     <div className="todo-container">
       <div className="block-container">
@@ -69,12 +75,12 @@ const Todo = () => {
         <form onSubmit={handleSubmit}>
           <label>
             <input name="add-item" value={itemToAdd} onChange={handleChange} />
-            <button>Add item</button>
+            <button onClick={() => addItem(itemToAdd)}>Add item</button>
           </label>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Todo
+export default Todo;
